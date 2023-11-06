@@ -41,7 +41,13 @@ public class Event {
      */
     public boolean isInDay(LocalDate aDay) {
         // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        boolean res = false;
+        if (aDay.isAfter(myStart.toLocalDate()) || aDay.equals(myStart.toLocalDate())){
+            if (aDay.isBefore(myStart.plus(myDuration).toLocalDate()) || aDay.isEqual(myStart.plus(myDuration).toLocalDate())) {
+                res = true;
+            }
+        }
+        return res;
     }
    
     /**
@@ -66,6 +72,8 @@ public class Event {
         return myDuration;
     }
 
-   
+   public String toString(){
+        return "L'évènement est "+getTitle()+" le "+getStart()+" pendant "+getDuration();
+   }
     
 }
