@@ -34,4 +34,34 @@ public class Agenda {
         }
         return EventsDay;
     }
+
+    /**
+     * Trouver les événements de l'agenda en fonction de leur titre
+     * @param title le titre à rechercher
+     * @return les événements qui ont le même titre
+     */
+    public List<Event> findByTitle(String title) {
+      List<Event> evs = new ArrayList<Event>();
+      for (Event e : Events){
+          if(e.getTitle().equals(title)){
+              evs.add(e);
+          }
+      }
+      return evs;
+    }
+
+    /**
+     * Déterminer s’il y a de la place dans l'agenda pour un événement
+     * @param e L'événement à tester (on se limitera aux événements simples)
+     * @return vrai s’il y a de la place dans l'agenda pour cet événement
+     */
+    public boolean isFreeFor(Event e) {
+        boolean res = true;
+        for (Event ev : Events){
+            if (e.getStart().plus(e.getDuration()).isAfter(ev.getStart()) && e.getStart().isBefore(ev.getStart().plus(ev.getDuration()))){
+                res=false;
+            }
+        }
+        return res;
+    }
 }
