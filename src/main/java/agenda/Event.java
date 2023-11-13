@@ -12,7 +12,7 @@ public class Event {
     /**
      * The starting time of the event
      */
-    private LocalDateTime myStart;
+    protected LocalDateTime myStart;
 
     /**
      * The durarion of the event
@@ -39,6 +39,7 @@ public class Event {
      * @param aDay the day to test
      * @return true if the event occurs on that day, false otherwise
      */
+
     public boolean isInDay(LocalDate aDay) {
         // TODO : implémenter cette méthode
         boolean res = false;
